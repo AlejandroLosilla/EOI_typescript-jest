@@ -1,4 +1,5 @@
-import { sum, sub, multiply, div, sumAll } from '../src/math-operators';
+import { sum, sub, multiply, div, sumAll, subAll, multiplyAll, divAll } from '../src/math-operators';
+import * as mockMathOperators from '../src/math-operators';
 
 describe('sum operation', () => {
     test('sums two integer numbers', () => {
@@ -125,13 +126,69 @@ describe('divide operation', () => {
     });
 });
 
+
+
 describe('sumAll operation', () => {
-    test('sum many integer numbers', () => {
-        expect(sumAll([1, 2, 3])).toStrictEqual(6);
-        expect(sumAll([1, 2, 3, 4, 5, 6])).toStrictEqual(21);
-    });
+    // Tests de IntegraciÃ³n
+//  test('sum many integer numbers', () => {
+//      expect(sumAll([1, 2, 3])).toStrictEqual(6);
+//      expect(sumAll([1, 2, 3, 4, 5, 6])).toStrictEqual(21);
+//      expect(sumAll([2, 1.0, 0.05])).toStrictEqual(3.05);
+//      expect(sumAll([-1, 3, -1.1])).toStrictEqual(0.9);
+//      expect(() => sumAll([NaN, NaN, 12, 0])).toThrow();
+//  });
     test('sum less than three numbers', () => {
         expect(sumAll([1, 2])).toStrictEqual(3);
         expect(sumAll([1])).toStrictEqual(1);
     });
+    test('sum an empty array should return 0', () => {
+        expect(sumAll([])).toStrictEqual(0);
+    });
 });
+
+describe('subAll operation', () => {
+    test('sub less than three numbers', () => {
+        expect(subAll([1, 2])).toStrictEqual(-1);
+        expect(subAll([1])).toStrictEqual(1);
+    });
+    test('sub an empty array should return 0', () => {
+        expect(subAll([])).toStrictEqual(0);
+    });
+});
+
+describe('multiplyAll operation', () => {
+    test('multiply less than three numbers', () => {
+        expect(multiplyAll([1, 2])).toStrictEqual(2);
+        expect(multiplyAll([1])).toStrictEqual(1);
+    });
+    test('multiply an empty array should return 0', () => {
+        expect(multiplyAll([])).toStrictEqual(0);
+    });
+});
+
+describe('divAll operation', () => {
+    test('div more than two numbers to check operation number', () => {
+        expect(divAll([12,2,3])).toStrictEqual(2);
+    });
+    test('div one number should return that number', () => {
+        expect(divAll([1])).toStrictEqual(1);
+    });
+    test('div an empty array should return 0', () => {
+        expect(divAll([])).toStrictEqual(0);
+    });
+    test('div an array that contains 0s', () => {
+        expect(() => divAll([1, 0, 2, 0])).toThrow();
+    });
+});
+
+/*
+jest.mock('../src/math-operators', () => ({
+    sum: jest.fn(() => {throw new Error();})
+}))
+
+describe('sumAll mock test', () => {
+    test('sum many integer numbers', () => {
+        expect(() => sumAll([1])).toThrow();
+    });
+});
+*/

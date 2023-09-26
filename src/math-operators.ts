@@ -37,7 +37,22 @@ function div(a: number, b: number): number {
 // To Implement: subAll, multiplyAll, divAll
 
 function sumAll(numbers: Array<number>): number {
+    if (numbers.length == 0) return 0;
     return numbers.reduce( (result, number) => sum(result, number) );
 }
+function subAll(numbers: Array<number>): number {
+    if (numbers.length == 0) return 0;
+    return numbers.reduce( (result, number) => sub(result, number) );
+}
+function multiplyAll(numbers: Array<number>): number {
+    if (numbers.length == 0) return 0;
+    return numbers.reduce( (result, number) => multiply(result, number) );
+}
+function divAll(numbers: Array<number>): number {
+    if (numbers.length == 0) return 0;
+    return numbers.reduce( (result, number) => div(result, number) );
+}
 
-export { sum, sub, multiply, div, sumAll };
+// To Implement: operateAll
+
+export { sum, sub, multiply, div, sumAll, subAll, multiplyAll, divAll };
